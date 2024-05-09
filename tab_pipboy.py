@@ -8,7 +8,9 @@ from PyQt5.QtWidgets import (
     QTabWidget,
     QVBoxLayout,
     QWidget,
+    QLabel,
 )
+from PyQt5.QtGui import QMovie, QPalette, QColor
 
 class Window(QWidget):
     def __init__(self):
@@ -53,7 +55,7 @@ class Window(QWidget):
         tabs = QTabWidget()
         tabs.setStyleSheet(tabBarBarStyle)
 
-        tabs.addTab(self.generalTabUI(), "STAT")
+        tabs.addTab(self.statUI(), "STAT")
         tabs.addTab(self.networkTabUI(), "INV")
         tabs.addTab(self.networkTabUI(), "DATA")
         tabs.addTab(self.networkTabUI(), "MAP")
@@ -61,13 +63,20 @@ class Window(QWidget):
         layout.addWidget(tabs)
 
 
-    def generalTabUI(self):
+    def statUI(self):
         """Create the General page UI."""
         tab = QWidget()
+        mainWindowStyles = """
+            border: none;
+        """
+        self.movie = QMovie("images/vaultboy.gif")
+        valutBoyLable = QLabel(self)
+        valutBoyLable.setMovie(self.movie)
+        self.movie.start()
+        valutBoyLable.setAlignment(Qt.AlignCenter)
+        valutBoyLable.setStyleSheet(mainWindowStyles)
         layout = QVBoxLayout()
-        layout.addWidget(QCheckBox("General Option 1"))
-        layout.addWidget(QCheckBox("General Option 2"))
-        # tab.setStyleSheet(self.tabStyles)
+        layout.addWidget(valutBoyLable)
         tab.setLayout(layout)
         return tab
 
