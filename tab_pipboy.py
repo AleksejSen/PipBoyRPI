@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import (
     QVBoxLayout,
     QWidget,
     QLabel,
+    QApplication
 )
 from PyQt5.QtGui import QMovie, QPalette, QColor, QPixmap
 
@@ -36,7 +37,9 @@ class Window(QWidget):
             color : green;
         }
         QTabBar::tab-bar {
-            border: none;
+            border: 3px solid black;
+            border-top : 3px solid black;
+            border-bottom : 3px solid black;
         }
         QTabBar::tab:selected {
             color : green;
@@ -139,6 +142,7 @@ class Window(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setOverrideCursor(Qt.BlankCursor)  # Set the cursor to blank
     window = Window()
     window.show()
     sys.exit(app.exec_())
