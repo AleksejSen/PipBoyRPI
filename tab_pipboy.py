@@ -1,5 +1,6 @@
 import sys
 import os
+import pipboyComponents as pc
 
 from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtWidgets import (
@@ -9,16 +10,18 @@ from PyQt5.QtWidgets import (
     QVBoxLayout,
     QWidget,
     QLabel,
-    QApplication
+    QApplication,
+    QPushButton,
 )
 from PyQt5.QtGui import QMovie, QPalette, QColor, QPixmap
+
 
 class Window(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("PiP Boy")
         self.resize(480, 320)
-        self.setFixedSize(480,320)
+        self.setFixedSize(480, 320)
         self.setStyleSheet("background-color: black;")
         self.setWindowFlags(Qt.FramelessWindowHint)
 
@@ -67,7 +70,6 @@ class Window(QWidget):
         tabs.addTab(self.radioTabUI(), "RADIO")
         layout.addWidget(tabs)
 
-
     def statTabUI(self):
         """Create the General page UI."""
         tab = QWidget()
@@ -82,6 +84,10 @@ class Window(QWidget):
         valutBoyLable.setStyleSheet(mainWindowStyles)
         layout = QVBoxLayout()
         layout.addWidget(valutBoyLable)
+
+        layout.addWidget(pc.PipButton("BTN2"))
+        layout.addWidget(pc.PipLable("Lable1"))
+
         tab.setLayout(layout)
         tab.resize(420, 280)
         return tab
@@ -99,7 +105,6 @@ class Window(QWidget):
         invTab.resize(420, 280)
         return invTab
 
-    
     def dataTabUI(self):
         """Create the data page UI."""
         dataTab = QWidget()
@@ -112,7 +117,7 @@ class Window(QWidget):
         dataTab.setLayout(layout)
         dataTab.resize(420, 280)
         return dataTab
-    
+
     def mapTabUI(self):
         """Create the map page UI."""
         mapTab = QWidget()
@@ -125,7 +130,7 @@ class Window(QWidget):
         mapTab.setLayout(layout)
         mapTab.resize(420, 280)
         return mapTab
-    
+
     def radioTabUI(self):
         """Create the radio page UI."""
         radioTab = QWidget()
@@ -142,7 +147,7 @@ class Window(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setOverrideCursor(Qt.BlankCursor)  # Set the cursor to blank
+    # app.setOverrideCursor(Qt.BlankCursor)  # Set the cursor to blank
     window = Window()
     window.show()
     sys.exit(app.exec_())

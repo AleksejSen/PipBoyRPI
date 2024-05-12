@@ -1,0 +1,12 @@
+[Unit]
+Description=My Python Script Service
+After=multi-user.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/python3 /home/pi/tab_pipboy.py --platform linuxfb:/dev/dri/card0
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
