@@ -21,6 +21,9 @@ def PipButton(btnText):
     QPushButton{ 
         background-color: green; 
         border-radius: 0px;
+        font-family: Monofonto, serif;
+        font-weight: bold;
+        font-size: 15px;
     }
     QPushButton:pressed { 
         background-color: #002f00;
@@ -37,6 +40,25 @@ def PipLable(lableTxt):
     lableStyleStr = """
     QLabel{
         background-color: green; 
+        font-family: Monofonto, serif;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    """
+    lable = QLabel()
+    lable.setFixedSize(120, 20)
+    lable.setStyleSheet(lableStyleStr)
+    lable.setText(f" {lableTxt}")
+    return lable
+
+def PipLableInveted(lableTxt):
+    lableStyleStr = """
+    QLabel{
+        background-color: black; 
+        font-family: Monofonto, serif;
+        color: green;
+        font-weight: bold;
+        font-size: 15px;
     }
     """
     lable = QLabel()

@@ -87,6 +87,7 @@ class Window(QWidget):
 
         layout.addWidget(pc.PipButton("BTN2"))
         layout.addWidget(pc.PipLable("Lable1"))
+        layout.addWidget(pc.PipLableInveted("Lable2"))
 
         tab.setLayout(layout)
         tab.resize(420, 280)
