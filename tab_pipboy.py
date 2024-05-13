@@ -8,8 +8,11 @@ from PyQt5.QtWidgets import (
     QCheckBox,
     QTabWidget,
     QVBoxLayout,
+    QHBoxLayout,
     QWidget,
     QLabel,
+    QListWidget,
+    QListWidgetItem,   
     QApplication,
     QPushButton,
 )
@@ -25,7 +28,7 @@ class Window(QWidget):
         self.setStyleSheet("background-color: black;")
         self.setWindowFlags(Qt.FramelessWindowHint)
 
-        tabBarBarStyle = """
+        tabBarStyle = """
         QTabWidget::pane{
             border: 3px solid green;
             border-radius: 7px;
@@ -61,7 +64,7 @@ class Window(QWidget):
         # Create the tab widget with two tabs
         tabs = QTabWidget()
         tabs.resize(420, 280)
-        tabs.setStyleSheet(tabBarBarStyle)
+        tabs.setStyleSheet(tabBarStyle)
 
         tabs.addTab(self.statTabUI(), "STAT")
         tabs.addTab(self.invTabUI(), "INV")
@@ -109,12 +112,44 @@ class Window(QWidget):
     def dataTabUI(self):
         """Create the data page UI."""
         dataTab = QWidget()
-        dataPic = QPixmap('images/data.png')
-        lable = QLabel()
-        lable.setPixmap(dataPic)
-        lable.setScaledContents(True)
-        layout = QVBoxLayout()
-        layout.addWidget(lable)
+        # dataPic = QPixmap('images/data.png')
+        # lable = QLabel()
+        # lable.setPixmap(dataPic)
+        # lable.setScaledContents(True)
+        # layout = QVBoxLayout()
+        # layout.addWidget(lable)
+
+        layout = QHBoxLayout()
+
+        #List
+
+        listStyleStr = """
+        QListWidget {
+            border : 2px solid green;
+            color : green;
+            font-family: Monofonto, serif;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        QListView::item:selected {
+            background-color: green; 
+            color : black;
+        }
+        """
+        
+        list = QListWidget()
+        list.setGeometry(20, 20, 100, 100)
+
+        item1 = QListWidgetItem("Item 1")
+        item2 = QListWidgetItem("Item 2")
+        
+        list.addItem(item1)
+        list.addItem(item2)
+        
+        list.setStyleSheet(listStyleStr)
+        layout.addWidget(list)       
+        layout.addWidget(list)       
+        
         dataTab.setLayout(layout)
         dataTab.resize(420, 280)
         return dataTab
