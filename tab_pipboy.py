@@ -137,20 +137,48 @@ class Window(QWidget):
         """
         list = pc.PipList()
 
-        item1 = QListWidgetItem("Item 1")
-        item2 = QListWidgetItem("Item 2")
+        good_item= QListWidgetItem("Good")
+        waste_item= QListWidgetItem("Wasteland")
+        voice_item= QListWidgetItem("Voice")
+        radio_item= QListWidgetItem("Radiation")
 
-        list.addItem(item1)
-        list.addItem(item2)
+        good_pic = QPixmap('images/good.png')
+        wasteland_pic = QPixmap('images/wasteland.png')
+        voice_pic = QPixmap('images/voice.png')
+        radiation_pic = QPixmap('images/radiation.png')
+
+        list.addItem(good_item)
+        list.addItem(waste_item)
+        list.addItem(voice_item)
+        list.addItem(radio_item)
 
         pic = pc.PipLable("Item Name")
+        pic.setPixmap(wasteland_pic)
+        pic.setFixedSize(200, 200)
         layout.addWidget(list)       
         layout.addWidget(pic)       
 
-        def print_info():
-            pic.setText(list.currentItem().text()) 
+        # pic.setPixmap(pic1)
 
-        list.currentItemChanged.connect(print_info)
+
+        def showPicture():
+            if(list.currentItem().text() == "Good"):
+                pic.setPixmap(good_pic)
+
+            if(list.currentItem().text() == "Wasteland"):
+                pic.setPixmap(wasteland_pic)
+                
+            if(list.currentItem().text() == "Voice"):
+                pic.setPixmap(voice_pic)
+
+            if(list.currentItem().text() == "Radiation"):
+                pic.setPixmap(radiation_pic)
+
+            
+            
+            # pic.setText(list.currentItem().text()) 
+
+        list.currentItemChanged.connect(showPicture)
         
         dataTab.setLayout(layout)
         dataTab.resize(420, 280)
