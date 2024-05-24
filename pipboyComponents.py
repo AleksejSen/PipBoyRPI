@@ -1,5 +1,3 @@
-
-from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -9,6 +7,8 @@ from PyQt5.QtWidgets import (
     QLabel,
     QApplication,
     QPushButton,
+    QListWidget,
+    QListWidgetItem,   
 )
 from PyQt5.QtGui import QMovie, QPalette, QColor, QPixmap
 
@@ -66,3 +66,25 @@ def PipLableInveted(lableTxt):
     lable.setStyleSheet(lableStyleStr)
     lable.setText(f" {lableTxt}")
     return lable
+
+def PipList():
+    #List
+    listStyleStr = """
+    QListWidget {
+        border : 2px solid green;
+        color : green;
+        font-family: Monofonto, serif;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    QListView::item:selected {
+        background-color: green; 
+        color : black;
+    }
+    """
+    
+    list = QListWidget()
+    list.setGeometry(20, 20, 100, 100)
+    list.setStyleSheet(listStyleStr)
+
+    return list
