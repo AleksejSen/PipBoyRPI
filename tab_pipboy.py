@@ -122,7 +122,6 @@ class Window(QWidget):
         layout = QHBoxLayout()
 
         #List
-
         listStyleStr = """
         QListWidget {
             border : 2px solid green;
@@ -136,19 +135,22 @@ class Window(QWidget):
             color : black;
         }
         """
-        
-        list = QListWidget()
-        list.setGeometry(20, 20, 100, 100)
+        list = pc.PipList()
 
         item1 = QListWidgetItem("Item 1")
         item2 = QListWidgetItem("Item 2")
-        
+
         list.addItem(item1)
         list.addItem(item2)
-        
-        list.setStyleSheet(listStyleStr)
+
+        pic = pc.PipLable("Item Name")
         layout.addWidget(list)       
-        layout.addWidget(list)       
+        layout.addWidget(pic)       
+
+        def print_info():
+            pic.setText(list.currentItem().text()) 
+
+        list.currentItemChanged.connect(print_info)
         
         dataTab.setLayout(layout)
         dataTab.resize(420, 280)
