@@ -15,6 +15,7 @@ from PyQt5.QtWidgets import (
     QListWidgetItem,   
     QApplication,
     QPushButton,
+    QProgressBar,
 )
 from PyQt5.QtGui import QMovie, QPalette, QColor, QPixmap
 
@@ -85,12 +86,42 @@ class Window(QWidget):
         self.movie.start()
         valutBoyLable.setAlignment(Qt.AlignCenter)
         valutBoyLable.setStyleSheet(mainWindowStyles)
+
         layout = QVBoxLayout()
         layout.addWidget(valutBoyLable)
 
-        layout.addWidget(pc.PipButton("BTN2"))
-        layout.addWidget(pc.PipLable("Lable1"))
-        layout.addWidget(pc.PipLableInveted("Lable2"))
+
+        # status bar
+        status_layout = QHBoxLayout()
+            
+        barStyleStr = """
+        QProgressBar{
+            font-size: 10px;
+            font-family: Monofonto, serif;
+            font-weight: bold;
+            text-align: center;
+        }
+        QProgressBar::chunk {
+            font-size: 10px;
+            background-color: green;
+        }
+        """
+        bar = QProgressBar()
+        bar.setStyleSheet(barStyleStr)
+        bar.setGeometry(80, 10, 80, 10)
+        bar.setFixedSize(140, 10)
+        bar.setValue(100)
+        
+        helmet_pic = QPixmap('images/pipboy-helmet2.png')
+        helmet = QLabel()
+        hekmet_scale = helmet_pic.scaled(30, 30)
+        helmet.setPixmap(hekmet_scale) 
+        helmet.setFixedSize(50, 50)
+        status_layout.addWidget(helmet)
+        status_layout.addWidget(bar)
+        
+        layout.addLayout(status_layout)
+        # layout.addWidget(bar)
 
         tab.setLayout(layout)
         tab.resize(420, 280)
