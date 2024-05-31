@@ -80,7 +80,8 @@ class Window(QWidget):
         mainWindowStyles = """
             border: none;
         """
-        self.movie = QMovie("images/vaultboy.gif")
+        vaultboy_pic = os.path.join(os.path.dirname(__file__), 'images/vaultboy.gif')
+        self.movie = QMovie(vaultboy_pic)
         valutBoyLable = QLabel(self)
         valutBoyLable.setMovie(self.movie)
         self.movie.start()
@@ -111,8 +112,9 @@ class Window(QWidget):
         bar.setGeometry(80, 10, 80, 10)
         bar.setFixedSize(140, 10)
         bar.setValue(100)
-        
-        helmet_pic = QPixmap('images/pipboy-helmet2.png')
+
+        helmet_pic = os.path.join(os.path.dirname(__file__), 'images/pipboy-helmet2.png')
+        helmet_pic = QPixmap(helmet_pic)
         helmet = QLabel()
         hekmet_scale = helmet_pic.scaled(30, 30)
         helmet.setPixmap(hekmet_scale) 
