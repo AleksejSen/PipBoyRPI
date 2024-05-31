@@ -175,10 +175,10 @@ class Window(QWidget):
         voice_item= QListWidgetItem("Voice")
         radio_item= QListWidgetItem("Radiation")
 
-        good_pic = QPixmap('images/good.png')
-        wasteland_pic = QPixmap('images/wasteland.png')
-        voice_pic = QPixmap('images/voice.png')
-        radiation_pic = QPixmap('images/radiation.png')
+        good_pic = QPixmap(os.path.join(os.path.dirname(__file__), 'images/good.png'))
+        wasteland_pic = QPixmap(os.path.join(os.path.dirname(__file__), 'images/wasteland.png'))
+        voice_pic = QPixmap(os.path.join(os.path.dirname(__file__), 'images/voice.png'))
+        radiation_pic = QPixmap(os.path.join(os.path.dirname(__file__), 'images/radiation.png'))
 
         list.addItem(good_item)
         list.addItem(waste_item)
