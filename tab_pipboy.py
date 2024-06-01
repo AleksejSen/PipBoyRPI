@@ -114,13 +114,18 @@ class Window(QWidget):
         bar.setFixedSize(140, 10)
         bar.setValue(94)
 
-        #Helmet
+        #Armor element
         helmet_pic = os.path.join(os.path.dirname(__file__), 'images/pipboy-helmet2.png')
         helmet_pic = QPixmap(helmet_pic)
         helmet = QLabel()
         hekmet_scale = helmet_pic.scaled(36, 25)
         helmet.setPixmap(hekmet_scale) 
         helmet.setFixedSize(36, 25)
+        armor_lable = pc.PipLableInvetedCustom("45", 10, 12, 30)
+        armor_layout = QVBoxLayout()
+        armor_layout.addWidget(helmet)
+        armor_layout.addWidget(armor_lable)
+        armor_layout.setAlignment(Qt.AlignVCenter)
 
         #gun
         gun_pic = os.path.join(os.path.dirname(__file__), 'images/pipboy-gun2.png')
@@ -129,15 +134,19 @@ class Window(QWidget):
         hekmet_scale = gun_pic.scaled(36, 25)
         gun.setPixmap(hekmet_scale) 
         gun.setFixedSize(36, 25)
+        gun_lable = pc.PipLableInvetedCustom("45", 10, 12, 30)
+        gun_layout = QVBoxLayout()
+        gun_layout.addWidget(gun)
+        gun_layout.addWidget(gun_lable)
 
-        armor_lable = pc.PipLable("Item Name")
-        #TODO: fix armmor and gun lable so that it would look nice
         
         #Add components to status bar
-        status_layout.addWidget(helmet)
-        status_layout.addWidget(armor_lable)
+        # status_layout.addWidget(helmet)
+        # status_layout.addWidget(armor_lable)
+        status_layout.addLayout(armor_layout) 
         status_layout.addWidget(bar)
-        status_layout.addWidget(gun)
+        status_layout.addLayout(gun_layout) 
+        # status_layout.addWidget(gun)
         status_layout.setSpacing(0)
         
         layout.addLayout(status_layout)

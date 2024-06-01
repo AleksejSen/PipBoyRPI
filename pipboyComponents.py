@@ -50,6 +50,22 @@ def PipLable(lableTxt):
     lable.setStyleSheet(lableStyleStr)
     lable.setText(f" {lableTxt}")
     return lable
+    
+def PipLableCustom(lableTxt, font_size, h, w):
+    lableStyleStr = f"""
+    QLabel{{
+        background-color: green; 
+        font-family: Monofonto, serif;
+        font-weight: bold;
+        font-size: {font_size};
+        text-align: center;
+    }}
+    """
+    lable = QLabel()
+    lable.setFixedSize(w, h)
+    lable.setStyleSheet(lableStyleStr)
+    lable.setText(f" {lableTxt}")
+    return lable
 
 def PipLableInveted(lableTxt):
     lableStyleStr = """
@@ -63,6 +79,23 @@ def PipLableInveted(lableTxt):
     """
     lable = QLabel()
     lable.setFixedSize(120, 20)
+    lable.setStyleSheet(lableStyleStr)
+    lable.setText(f" {lableTxt}")
+    return lable
+
+
+def PipLableInvetedCustom(lableTxt, font_size, h, w):
+    lableStyleStr = f"""
+    QLabel{{
+        background-color: black; 
+        font-family: Monofonto, serif;
+        color: green;
+        font-weight: bold;
+        font-size: {font_size};
+    }}
+    """
+    lable = QLabel()
+    lable.setFixedSize(w, h)
     lable.setStyleSheet(lableStyleStr)
     lable.setText(f" {lableTxt}")
     return lable
