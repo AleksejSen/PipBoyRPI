@@ -95,7 +95,7 @@ class Window(QWidget):
         # status bar
         status_layout = QHBoxLayout()
             
-        barStyleStr = """
+        healthBarsStylStr = """
         QProgressBar{
             font-size: 10px;
             font-family: Monofonto, serif;
@@ -107,23 +107,40 @@ class Window(QWidget):
             background-color: green;
         }
         """
+        #healt bar
         bar = QProgressBar()
-        bar.setStyleSheet(barStyleStr)
+        bar.setStyleSheet(healthBarsStylStr)
         bar.setGeometry(80, 10, 80, 10)
         bar.setFixedSize(140, 10)
-        bar.setValue(100)
+        bar.setValue(94)
 
+        #Helmet
         helmet_pic = os.path.join(os.path.dirname(__file__), 'images/pipboy-helmet2.png')
         helmet_pic = QPixmap(helmet_pic)
         helmet = QLabel()
-        hekmet_scale = helmet_pic.scaled(30, 30)
+        hekmet_scale = helmet_pic.scaled(36, 25)
         helmet.setPixmap(hekmet_scale) 
-        helmet.setFixedSize(50, 50)
+        helmet.setFixedSize(36, 25)
+
+        #gun
+        gun_pic = os.path.join(os.path.dirname(__file__), 'images/pipboy-gun2.png')
+        gun_pic = QPixmap(gun_pic)
+        gun = QLabel()
+        hekmet_scale = gun_pic.scaled(36, 25)
+        gun.setPixmap(hekmet_scale) 
+        gun.setFixedSize(36, 25)
+
+        armor_lable = pc.PipLable("Item Name")
+        #TODO: fix armmor and gun lable so that it would look nice
+        
+        #Add components to status bar
         status_layout.addWidget(helmet)
+        status_layout.addWidget(armor_lable)
         status_layout.addWidget(bar)
+        status_layout.addWidget(gun)
+        status_layout.setSpacing(0)
         
         layout.addLayout(status_layout)
-        # layout.addWidget(bar)
 
         tab.setLayout(layout)
         tab.resize(420, 280)
@@ -145,13 +162,6 @@ class Window(QWidget):
     def dataTabUI(self):
         """Create the data page UI."""
         dataTab = QWidget()
-        # dataPic = QPixmap('images/data.png')
-        # lable = QLabel()
-        # lable.setPixmap(dataPic)
-        # lable.setScaledContents(True)
-        # layout = QVBoxLayout()
-        # layout.addWidget(lable)
-
         layout = QHBoxLayout()
 
         #List
@@ -191,9 +201,6 @@ class Window(QWidget):
         layout.addWidget(list)       
         layout.addWidget(pic)       
 
-        # pic.setPixmap(pic1)
-
-
         def showPicture():
             if(list.currentItem().text() == "Good"):
                 pic.setPixmap(good_pic)
@@ -206,10 +213,6 @@ class Window(QWidget):
 
             if(list.currentItem().text() == "Radiation"):
                 pic.setPixmap(radiation_pic)
-
-            
-            
-            # pic.setText(list.currentItem().text()) 
 
         list.currentItemChanged.connect(showPicture)
         
