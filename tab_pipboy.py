@@ -156,7 +156,8 @@ class Window(QWidget):
     def invTabUI(self):
         """Create the inv page UI."""
         invTab = QWidget()
-        invePic = QPixmap('images/inventory.png')
+        inventoryPic =os.path.join(os.path.dirname(__file__),'images/inventory.png' ) 
+        invePic = QPixmap(inventoryPic)
         lable = QLabel()
         lable.setPixmap(invePic)
         lable.setScaledContents(True)
@@ -229,8 +230,9 @@ class Window(QWidget):
 
     def mapTabUI(self):
         """Create the map page UI."""
+        
         mapTab = QWidget()
-        mapPic = QPixmap('images/map.png')
+        mapPic = QPixmap(os.path.join(os.path.dirname(__file__), 'images/map.png'))
         lable = QLabel()
         lable.setPixmap(mapPic)
         lable.setScaledContents(True)
@@ -243,7 +245,7 @@ class Window(QWidget):
     def radioTabUI(self):
         """Create the radio page UI."""
         radioTab = QWidget()
-        radioPic = QPixmap('images/radio.png')
+        radioPic = QPixmap(os.path.join(os.path.dirname(__file__), 'images/radio.png' ))
         lable = QLabel()
         lable.setPixmap(radioPic)
         lable.setScaledContents(True)
