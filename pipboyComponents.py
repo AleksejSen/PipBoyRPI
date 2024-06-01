@@ -16,21 +16,21 @@ from PyQt5.QtGui import QMovie, QPalette, QColor, QPixmap
 """
 Button Creation Function
 """
-def PipButton(btnText):
-    btnStyleStr = """
-    QPushButton{ 
+def PipButton(btnText, font_size, w, h):
+    btnStyleStr = f"""
+    QPushButton{{ 
         background-color: green; 
         border-radius: 0px;
         font-family: Monofonto, serif;
         font-weight: bold;
-        font-size: 15px;
-    }
-    QPushButton:pressed { 
+        font-size: {font_size};
+    }}
+    QPushButton:pressed {{ 
         background-color: #002f00;
-    }
+    }}
     """
     btn = QPushButton()
-    btn.setFixedSize(50, 20)
+    btn.setFixedSize(w, h)
     btn.setStyleSheet(btnStyleStr)
     btn.setText(btnText)
     return btn

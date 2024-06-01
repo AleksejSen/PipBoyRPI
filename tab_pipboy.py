@@ -154,17 +154,66 @@ class Window(QWidget):
         return tab
 
     def invTabUI(self):
-        """Create the inv page UI."""
+        main_layout = QVBoxLayout()
+        # Your list of items (replace with your actual data)
+        my_list = ["WEAPONS", "APEAL", "AID"]
+        # Create a vertical layout
+        top_layout = QHBoxLayout()
+        # Add buttons for each item in the list
+        for item in my_list:
+            button = pc.PipButton(item, 15, 100, 20)
+            top_layout.addWidget(button)
+
+
+        #Lists
+        listStyleStr = """
+        QListWidget {
+            border : 2px solid green;
+            color : green;
+            font-family: Monofonto, serif;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        QListView::item:selected {
+            background-color: green; 
+            color : black;
+        }
+        """
+        list = pc.PipList()
+
+        good_item= QListWidgetItem("Good")
+        waste_item= QListWidgetItem("Wasteland")
+        voice_item= QListWidgetItem("Voice")
+        radio_item= QListWidgetItem("Radiation")
+
+        list.addItem(good_item)
+        list.addItem(waste_item)
+        list.addItem(voice_item)
+        list.addItem(radio_item)
+
+        
         invTab = QWidget()
-        inventoryPic =os.path.join(os.path.dirname(__file__),'images/inventory.png' ) 
-        invePic = QPixmap(inventoryPic)
-        lable = QLabel()
-        lable.setPixmap(invePic)
-        lable.setScaledContents(True)
-        layout = QVBoxLayout()
-        layout.addWidget(lable)
-        invTab.setLayout(layout)
-        invTab.resize(420, 280)
+        # Set the layout for the main widget
+        main_layout.addLayout(top_layout)
+        main_layout.addWidget(list)
+        invTab.setLayout(main_layout)
+
+        # Set window properties
+        invTab.setWindowTitle("Vertical List Example")
+        invTab.setGeometry(100, 100, 300, 200)
+
+        
+        """Create the inv page UI."""
+        # invTab = QWidget()
+        # inventoryPic =os.path.join(os.path.dirname(__file__),'images/inventory.png' ) 
+        # invePic = QPixmap(inventoryPic)
+        # lable = QLabel()
+        # lable.setPixmap(invePic)
+        # lable.setScaledContents(True)
+        # layout = QVBoxLayout()
+        # layout.addWidget(lable)
+        # invTab.setLayout(layout)
+        # invTab.resize(420, 280)
         return invTab
 
     def dataTabUI(self):
