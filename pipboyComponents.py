@@ -19,7 +19,8 @@ Button Creation Function
 def PipButton(btnText, font_size, w, h):
     btnStyleStr = f"""
     QPushButton{{ 
-        background-color: green; 
+        background-color: black; 
+        color: green;
         border-radius: 0px;
         font-family: Monofonto, serif;
         font-weight: bold;
@@ -27,6 +28,11 @@ def PipButton(btnText, font_size, w, h):
     }}
     QPushButton:pressed {{ 
         background-color: #002f00;
+    }}
+
+    QPushButton:focus {{ 
+        background-color: green; 
+        color: black;
     }}
     """
     btn = QPushButton()

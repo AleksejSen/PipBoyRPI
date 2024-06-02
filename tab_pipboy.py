@@ -68,12 +68,20 @@ class Window(QWidget):
         tabs.setStyleSheet(tabBarStyle)
 
         tabs.addTab(self.statTabUI(), "STAT")
+        #Inventor Tab
+        self.weapons_btn = pc.PipButton("WEAPONS", 15, 100, 20)
         tabs.addTab(self.invTabUI(), "INV")
+        tabs.currentChanged.connect(self.set_focus_on_weapons)
+
         tabs.addTab(self.dataTabUI(), "DATA")
         tabs.addTab(self.mapTabUI(), "MAP")
         tabs.addTab(self.radioTabUI(), "RADIO")
         layout.addWidget(tabs)
 
+
+    def set_focus_on_weapons(self):
+        self.weapons_btn.setFocus()
+    
     def statTabUI(self):
         """Create the General page UI."""
         tab = QWidget()
@@ -153,17 +161,25 @@ class Window(QWidget):
         tab.resize(420, 280)
         return tab
 
+    
     def invTabUI(self):
         main_layout = QVBoxLayout()
-        # Your list of items (replace with your actual data)
-        my_list = ["WEAPONS", "APEAL", "AID"]
         # Create a vertical layout
         top_layout = QHBoxLayout()
-        # Add buttons for each item in the list
-        for item in my_list:
-            button = pc.PipButton(item, 15, 100, 20)
-            top_layout.addWidget(button)
+        
+        apeal_btn = pc.PipButton("APEAL", 15, 100, 20)
+        aid_btn = pc.PipButton("AID", 15, 100, 20)
 
+        apeal_btn.setFocusPolicy(Qt.StrongFocus)
+        aid_btn.setFocusPolicy(Qt.StrongFocus)
+
+
+        # Add buttons for each item in the list
+        #wapon button is creted in the Window class to fix auto focus when this tab is active
+        top_layout.addWidget(self.weapons_btn)
+        top_layout.addWidget(apeal_btn)
+        top_layout.addWidget(aid_btn)
+        # self.weapons_btn.setFocus()
 
         #Lists
         listStyleStr = """
@@ -181,15 +197,15 @@ class Window(QWidget):
         """
         list = pc.PipList()
 
-        good_item= QListWidgetItem("Good")
-        waste_item= QListWidgetItem("Wasteland")
-        voice_item= QListWidgetItem("Voice")
-        radio_item= QListWidgetItem("Radiation")
+        pisotl_item= QListWidgetItem("10mm Pistol")
+        fatman_item= QListWidgetItem("Fat Man")
+        shotgun_item= QListWidgetItem("Shotgun")
+        minigun_item= QListWidgetItem("Minigun")
 
-        list.addItem(good_item)
-        list.addItem(waste_item)
-        list.addItem(voice_item)
-        list.addItem(radio_item)
+        list.addItem(pisotl_item)
+        list.addItem(fatman_item)
+        list.addItem(shotgun_item)
+        list.addItem(minigun_item)
 
         
         invTab = QWidget()
@@ -198,22 +214,11 @@ class Window(QWidget):
         main_layout.addWidget(list)
         invTab.setLayout(main_layout)
 
+
         # Set window properties
         invTab.setWindowTitle("Vertical List Example")
         invTab.setGeometry(100, 100, 300, 200)
 
-        
-        """Create the inv page UI."""
-        # invTab = QWidget()
-        # inventoryPic =os.path.join(os.path.dirname(__file__),'images/inventory.png' ) 
-        # invePic = QPixmap(inventoryPic)
-        # lable = QLabel()
-        # lable.setPixmap(invePic)
-        # lable.setScaledContents(True)
-        # layout = QVBoxLayout()
-        # layout.addWidget(lable)
-        # invTab.setLayout(layout)
-        # invTab.resize(420, 280)
         return invTab
 
     def dataTabUI(self):
