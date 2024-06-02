@@ -206,12 +206,15 @@ class Window(QWidget):
         list.addItem(shotgun_item)
         list.addItem(minigun_item)
 
-        #10mm gun        
-        wasteland_pic = QPixmap(os.path.join(os.path.dirname(__file__), 'images/10mmgreen.png'))
-        wasteland_pic = wasteland_pic.scaled(150, 104)
+        #Gun viewer layout
+        gun10mm_pic = QPixmap(os.path.join(os.path.dirname(__file__), 'images/10mmgreen.png'))
+        gun10mm_pic = gun10mm_pic.scaled(150, 104)
         pic = pc.PipLableInveted("Item Name")
-        pic.setPixmap(wasteland_pic)
+        pic.setPixmap(gun10mm_pic)
         pic.setFixedSize(200, 200)
+        gun_view_layout = QVBoxLayout()
+        gun_view_layout.addWidget(pic)
+        #TODO: add gun description lable here
 
         inventory_layout = QHBoxLayout()
         invTab = QWidget()
