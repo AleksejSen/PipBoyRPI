@@ -179,7 +179,6 @@ class Window(QWidget):
         top_layout.addWidget(self.weapons_btn)
         top_layout.addWidget(apeal_btn)
         top_layout.addWidget(aid_btn)
-        # self.weapons_btn.setFocus()
 
         #Lists
         listStyleStr = """
@@ -207,11 +206,20 @@ class Window(QWidget):
         list.addItem(shotgun_item)
         list.addItem(minigun_item)
 
-        
+        #10mm gun        
+        wasteland_pic = QPixmap(os.path.join(os.path.dirname(__file__), 'images/10mmgreen.png'))
+        wasteland_pic = wasteland_pic.scaled(150, 104)
+        pic = pc.PipLableInveted("Item Name")
+        pic.setPixmap(wasteland_pic)
+        pic.setFixedSize(200, 200)
+
+        inventory_layout = QHBoxLayout()
         invTab = QWidget()
         # Set the layout for the main widget
         main_layout.addLayout(top_layout)
-        main_layout.addWidget(list)
+        inventory_layout.addWidget(list)
+        inventory_layout.addWidget(pic)
+        main_layout.addLayout(inventory_layout)
         invTab.setLayout(main_layout)
 
 

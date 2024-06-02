@@ -56,6 +56,21 @@ def PipLable(lableTxt):
     lable.setStyleSheet(lableStyleStr)
     lable.setText(f" {lableTxt}")
     return lable
+
+def PipLableInverted(lableTxt):
+    lableStyleStr = """
+    QLabel{
+        background-color: black; 
+        font-family: Monofonto, serif;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    """
+    lable = QLabel()
+    lable.setFixedSize(120, 20)
+    lable.setStyleSheet(lableStyleStr)
+    lable.setText(f" {lableTxt}")
+    return lable
     
 def PipLableCustom(lableTxt, font_size, h, w):
     lableStyleStr = f"""
